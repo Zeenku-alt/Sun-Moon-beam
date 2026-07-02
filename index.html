@@ -1,23 +1,81 @@
-let timeLeft = 8 * 60 * 60;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site is Fixing</title>
 
-function updateTimer() {
-
-    let hours = Math.floor(timeLeft / 3600);
-    let minutes = Math.floor((timeLeft % 3600) / 60);
-    let seconds = timeLeft % 60;
-
-    document.getElementById("timer").textContent =
-        String(hours).padStart(2, "0") + ":" +
-        String(minutes).padStart(2, "0") + ":" +
-        String(seconds).padStart(2, "0");
-
-    if (timeLeft <= 0) {
-        // Restart the timer back to 8 hours
-        timeLeft = 8 * 60 * 60;
-    } else {
-        timeLeft--;
-    }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
-updateTimer();
-setInterval(updateTimer, 1000);
+body{
+    background:#FFD54F;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.card{
+    width:500px;
+    background:#FFF8B0;
+    border:3px solid #FFC107;
+    border-radius:20px;
+    padding:40px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+h1{
+    font-size:36px;
+    margin-bottom:20px;
+    color:#333;
+}
+
+p{
+    font-size:18px;
+    color:#555;
+    line-height:1.7;
+    margin-bottom:15px;
+}
+
+.status{
+    margin-top:20px;
+    font-size:22px;
+    font-weight:bold;
+    color:#E65100;
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+<h1>🛠️ Site is Fixing</h1>
+
+<p>
+The website is currently under maintenance while we work on improvements.
+</p>
+
+<p>
+Please come back later.
+</p>
+
+<p>
+Thank you for your patience and understanding.
+</p>
+
+<div class="status">
+🚧 Maintenance in Progress
+</div>
+
+</div>
+
+</body>
+</html>
