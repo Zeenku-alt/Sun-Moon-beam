@@ -1,81 +1,368 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sun Moon Dashboard</title>
+
+<style>
+:root{
+    --bg:#fff9c4;
+    --card:rgba(255,255,255,0.65);
+    --border:#ffd54f;
+    --text:#222;
+    --accent:#ffb300;
+}
+
+body.dark{
+    --bg:#070b1a;
+    --card:rgba(255,255,255,0.06);
+    --border:rgba(255,255,255,0.1);
+    --text:#fff;
+    --accent:#ffd54f;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:var(--bg);
+    color:var(--text);
+    transition:0.8s;
+    overflow-x:hidden;
+}
+
+/* HEADER */
+.header{
+    padding:25px 15px;
+    position:relative;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+}
+
+/* DISCORD */
+.discord-btn{
+    display:inline-block;
+    padding:10px 14px;
+    font-size:14px;
+    font-weight:bold;
+    border-radius:12px;
+    background:rgba(0,0,0,0.35);
+    color:#00f7ff;
+    border:1px solid #00f7ff;
+    box-shadow:0 0 8px #00f7ff;
+    text-decoration:none;
+}
+
+/* TOGGLE */
+.toggle{
+    padding:10px 14px;
+    border:none;
+    border-radius:10px;
+    background:var(--accent);
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* TITLE */
+.title{
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+    margin-top:10px;
+    color:var(--accent);
+}
+
+/* SUN / MOON */
+.sun, .moon{
+    position:absolute;
+    top:70px;
+    right:20px;
+    font-size:60px;
+    transition:0.8s ease;
+    pointer-events:none;
+}
+
+.moon{opacity:0;font-size:35px;}
+body.dark .sun{opacity:0;}
+body.dark .moon{opacity:1;}
+
+/* STATUS */
+.status{
+    text-align:center;
+    margin-top:10px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+/* GRID */
+.container{
+    width:92%;
+    max-width:1100px;
+    margin:60px auto;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+/* CARD */
+.card{
+    position:relative;
+    background:var(--card);
+    border:2px solid var(--border);
+    border-radius:18px;
+    padding:25px;
+    min-height:170px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.card h3{
+    font-size:20px;
+    margin-bottom:6px;
+}
+
+.desc{
+    font-size:13px;
+    opacity:0.85;
+    margin-bottom:12px;
+}
+
+/* BUTTON */
+.btn{
+    width:100%;
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    background:var(--accent);
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* RANK */
+.rank{
+    position:absolute;
+    top:10px;
+    right:10px;
+    padding:5px 8px;
+    font-size:12px;
+    font-weight:bold;
+    border-radius:8px;
+}
+
+.rank1{background:#ffd700;}
+.rank2{background:#c0c0c0;}
+.rank3{background:#cd7f32;color:#fff;}
+.rank4{background:#ffe082;}
+
+/* FOOTER */
+.footer{
+    text-align:center;
+    margin-top:70px;
+    padding:20px;
+    font-size:13px;
+    letter-spacing:2px;
+    font-weight:bold;
+    opacity:0.8;
+}
+
+.footer span{
+    color:var(--accent);
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+    <div class="topbar">
+
+        <a class="discord-btn" href="https://discord.gg/MsXA633fDW" target="_blank">
+            💬 Discord
+        </a>
+
+        <button class="toggle" onclick="toggleMode()" id="modeBtn">
+            Dark Mode
+        </button>
+
+    </div>
+
+    <div class="title" id="titleText">☀️ Sun Moon Dashboard</div>
+
+    <div class="sun">☀️</div>
+    <div class="moon">🌙</div>
+</div>
+
+<div class="status">
+    🟢 24 Hours Service 🟢 Active Site
+</div>
+
+<div class="container">
+<div class="grid">
+
+<div class="card">
+<div class="rank rank1">#1 Best 🥇</div>
+<h3>🌌 Astral site</h3>
+<div class="desc">Create your fake link using Astral site</div>
+<button class="btn" onclick="goTo('https://app.beamse.pro/gen/SunMoon')">Go</button>
+</div>
+
+<div class="card">
+<div class="rank rank2">#2 Best 🥈</div>
+<h3>🩸 Injuries </h3>
+<div class="desc">Create your fake link using Injuries site.</div>
+<button class="btn" onclick="goTo('https://www.logged.tg/auth/sunmoon')">Go</button>
+</div>
+
+<div class="card">
+<div class="rank rank3">#3 Best 🥉</div>
+<h3>🔰 Splunk site</h3>
+<div class="desc">Create your fake link using Splunk site</div>
+<button class="btn" onclick="goTo('https://app.beamers.si/u/SunMoon')">Go</button>
+</div>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Site is Fixing</title>
+<title>Bottom Left Hamburger Menu</title>
 
 <style>
-*{
+body{
     margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,sans-serif;
+    background:#;
 }
 
-body{
-    background:#FFD54F;
+/* Hamburger Button */
+.hamburger{
+    position:fixed;
+    left:20px;
+    bottom:20px;
+    width:55px;
+    height:55px;
+    background:#222;
+    color:#ffe082;
+    border-radius:50%;
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
+    font-size:30px;
+    cursor:pointer;
+    box-shadow:0 5px 15px #ffd700;
+    z-index:1000;
 }
 
-.card{
-    width:500px;
-    background:#FFF8B0;
-    border:3px solid #FFC107;
-    border-radius:20px;
-    padding:40px;
-    text-align:center;
-    box-shadow:0 8px 20px rgba(0,0,0,.2);
+/* Menu */
+.menu{
+    position:fixed;
+    left:20px;
+    bottom:85px;
+    width:180px;
+    background:#cd7f32;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba #fff;
+    display:none;
+    overflow:hidden;
+    z-index:1000;
 }
 
-h1{
-    font-size:36px;
-    margin-bottom:20px;
-    color:#333;
-}
-
-p{
-    font-size:18px;
-    color:#555;
-    line-height:1.7;
-    margin-bottom:15px;
-}
-
-.status{
-    margin-top:20px;
-    font-size:22px;
+.menu a{
+    display:block;
+    padding:14px;
+    color:#222;
+    text-decoration:none;
     font-weight:bold;
-    color:#E65100;
+}
+
+.menu a:hover{
+    background:#eee;
 }
 </style>
-
 </head>
 <body>
 
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+
+<div class="menu" id="menu">
+    <a href="https://hyperlink-sun-moon.vercel.app/" target="_blank">Hyperlink</a>
+</div>
+
+<script>
+function toggleMenu(){
+    const menu=document.getElementById("menu");
+    menu.style.display=(menu.style.display==="block")?"none":"block";
+}
+
+document.addEventListener("click",function(e){
+    const menu=document.getElementById("menu");
+    const button=document.querySelector(".hamburger");
+
+    if(!menu.contains(e.target) && !button.contains(e.target)){
+        menu.style.display="none";
+    }
+});
+</script>
+
+</body>
+</html>
+
 <div class="card">
-
-<h1>🛠️ Site is Fixing</h1>
-
-<p>
-The website is currently under maintenance while we work on improvements.
-</p>
-
-<p>
-Please come back later.
-</p>
-
-<p>
-Thank you for your patience and understanding.
-</p>
-
-<div class="status">
-🚧 Maintenance in Progress
+<div class="rank rank4"></div>
+<h3>🍪 cookie refresher</h3>
+<div class="desc">Basic utility tools.</div>
+<button class="btn" onclick="goTo('https://cookie-bypasser-refresher.vercel.app/')">Go</button>
 </div>
 
 </div>
+</div>
+
+<div class="footer">
+    <span>2026</span> - BEST - BEAM - SERVER
+</div>
+
+<script>
+let dark=false;
+
+function toggleMode(){
+    dark=!dark;
+    document.body.classList.toggle("dark");
+
+    const btn=document.getElementById("modeBtn");
+    const title=document.getElementById("titleText");
+
+    if(dark){
+        btn.innerText="Light Mode";
+        title.innerText="🌑 Sun Moon Dashboard";
+    }else{
+        btn.innerText="Dark Mode";
+        title.innerText="☀️ Sun Moon Dashboard";
+    }
+}
+
+/* ✅ GO BUTTON FUNCTION */
+function goTo(url){
+    window.open(url, "_blank"); // opens link after pressing Go
+}
+</script>
 
 </body>
 </html>
